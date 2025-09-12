@@ -1,5 +1,6 @@
 package ar1hurgit.enderpearltweak.client;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -40,8 +41,14 @@ public class PearlNameClient implements ClientModInitializer {
 
             matrices.push();
             matrices.translate(0.0D, 0.1D, 0.0D);
+            matrices.scale(0.5f, 0.5f, 0.5f);
+
+
             this.renderLabelIfPresent(pearl, Text.literal(name), matrices, vertexConsumers, light, tickDelta);
+            RenderSystem.enableDepthTest();
             matrices.pop();
         }
+
     }
+
 }
