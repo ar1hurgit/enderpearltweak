@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "enderpearltweak",
+  "version": "1.0.0",
+  "name": "EnderPearl Tweak",
+  "description": "Affiche un nametag sur les Ender Pearls",
+  "author": ["ar1hurgit"],
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "ar1hurgit.enderpearltweak.client.PearlNameClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*"
+  }
+}
