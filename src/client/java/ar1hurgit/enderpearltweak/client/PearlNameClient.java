@@ -6,27 +6,24 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.projectile.thrown.EnderPearlEntity;
 import net.minecraft.text.Text;
-import net.minecraft.util.math.Vec3d;
 
 @Environment(EnvType.CLIENT)
 public class PearlNameClient implements ClientModInitializer {
-
     @Override
     public void onInitializeClient() {
         EntityRendererRegistry.register(
                 net.minecraft.entity.EntityType.ENDER_PEARL,
-                (EntityRendererFactory.Context ctx) -> new EnderPearlWithNameRenderer(ctx)
+                EnderPearlWithNameRenderer::new
         );
 
         // Register le renderer de trajectoire
-        WorldRenderEvents.LAST.register(ctx -> PearlTrajectoryRenderer.render(ctx));
+        WorldRenderEvents.LAST.register(PearlTrajectoryRenderer::render);
     }
 
     public static class EnderPearlWithNameRenderer extends FlyingItemEntityRenderer<EnderPearlEntity> {
